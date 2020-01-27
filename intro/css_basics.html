@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Css Basics</title>
+    <script src="../../vue.js"></script>
+    <link rel="stylesheet"  href="css_basics.css"/>
+</head>
+
+<body>
+    <div id="app">
+        <div 
+            class="demo" 
+            @click='attachRed = !attachRed'
+            :class="divClasses"
+        ></div>
+        <div 
+            class="demo"
+            :class="{red: attachRed}"
+        ></div>
+        <div class="demo" :class="[color, {red: attachRed}]"></div>
+        <hr>
+        <input type="text" v-model="color">
+    </div>
+</body>
+
+<script>
+    
+new Vue({
+    el: '#app',
+    data: {
+        attachRed: false,
+        color: 'green'
+    },
+    computed: {
+        divClasses() {
+            return {
+                red: this.attachRed,
+                blue: !this.attachRed
+            }
+        }
+    },
+    methods: {
+    }
+});
+
+</script>
+
+</html>
